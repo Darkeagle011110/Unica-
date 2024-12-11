@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart - VisionIQ</title>
+    <link rel="stylesheet" href="/static/css/catalog.css">
+    <style>
+header {
+    background: #0073e6;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    padding: 10px 0;
+    margin: 0;
+    background-color: #f1eaea;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a {
+    color: #020202;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+nav.active .nav-links {
+    width: 100%;
+}
+
+nav.active .nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: #1b1818;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+nav.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav.active .line2 {
+    opacity: 0;
+}
+
+nav.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #0073e6, #80bfff);
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+        }
+
+        .theme-toggle input[type="checkbox"] {
+            display: none;
+        }
+
+        .theme-toggle label {
+            width: 30px;
+            height: 18px;
+            background-color: #333;
+            border-radius: 30px;
+            position: relative;
+        }
+
+        .theme-toggle label:after {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle input[type="checkbox"]:checked + label:after {
+            left: 14px;
+        }
+
+        .section {
+            padding: 50px 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            color: #2874f0;
+        }
+
+        .scrollable {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+        }
+
+        .category img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .category h3 {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+	footer {
+            text-align: center;
+            padding: 20px;
+            background: #0073e6;
+            color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .scrollable {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .category {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">UNICA</div>
+            <button class="icon" id="toggle">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#catalog">CATALOG</a></li>
+                <li><a href="/predict">PREDICT</a></li>
+                <li><a href="/analysis">ANALYSIS</a></li>
+                <li><a href="/history">HISTORY</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+    <section id="fruits" class="section">
+        <h2>Fruits</h2>
+        <div class="scrollable">
+            <div class="category">
+                <img src="https://thumbs.dreamstime.com/b/red-apple-leaf-slice-white-background-29914331.jpg" alt="Apple">
+                <h3>Apple</h3>
+            </div>
+            <div class="category">
+                <img src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/bananas-mc-221004-02-3ddd88.jpg" alt="Banana">
+                <h3>Banana</h3>
+            </div>
+            <div class="category">
+                <img src="https://5.imimg.com/data5/VU/MR/MY-24751011/purple-grapes-500x500.jpg" alt="Grapes">
+                <h3>Grapes</h3>
+            </div>
+            <div class="category">
+                <img src="https://www.shutterstock.com/image-photo/fresh-orange-fruits-leaves-background-600nw-2472838821.jpg" alt="Orange">
+                <h3>Orange</h3>
+            </div>
+            <div class="category">
+                <img src="https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg" alt="Kiwi">
+                <h3>Kiwi</h3>
+            </div>
+        </div> </center>
+    </section>
+
+<hr>
+
+    <section id="vegetables" class="section">
+        <h2>Vegetables</h2>
+        <div class="scrollable">
+            <div class="category">
+                <img src="https://gourmetgarden.in/cdn/shop/products/Carrot_1280x.jpg?v=1704281309" alt="Carrot">
+                <h3>Carrot</h3>
+            </div>
+            <div class="category">
+                <img src="https://media.istockphoto.com/id/157430678/photo/three-potatoes.jpg?s=612x612&w=0&k=20&c=qkMoEgcj8ZvYbzDYEJEhbQ57v-nmkHS7e88q8dv7TSA=" alt="Potato">
+                <h3>Potato</h3>
+            </div>
+            <div class="category">
+                <img src="https://cdn-magazine.nutrabay.com/wp-content/uploads/2023/06/fresh-beetroot-wooden-table-scaled.jpg" alt="Tomato">
+                <h3>Tomato</h3>
+            </div>
+            <div class="category">
+                <img src="https://www.jiomart.com/images/product/original/590002370/cabbage-1-pc-approx-600-g-1000-g-product-images-o590002370-p590002370-0-202409171904.jpg?im=Resize=(420,420)" alt="Cabbage">
+                <h3>Cabbage</h3>
+            </div>
+        </div>
+    </section>
+
+<hr>
+
+    <section id="products" class="section">
+        <h2>Products by Brand</h2>
+        <div class="scrollable">
+            <div class="category">
+                <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-214686,resizemode-75,msid-105602387/industry/cons-products/food/at-balaji-get-a-taste-of-big-things-to-come.jpg" alt="Balaji Wafers">
+                <h3>Balaji Wafers</h3>
+            </div>
+            <div class="category">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2020/11/AA/GQ/FV/77758209/britannia-500x500.jpg" alt="Britannia Biscuits">
+                <h3>Britannia Biscuits</h3>
+            </div>
+            <div class="category">
+                <img src="https://www.ravalexports.com/wp-content/uploads/2020/09/mondelez-international-brings-fi-51aa2a3ebd-600x337.jpg" alt="Cadbury Biscuits">
+                <h3>Cadbury Biscuits</h3>
+            </div>
+        </div>
+    </section>
+
+<footer>
+        <p>&copy; 2024 Flipkart VisionIQ. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+header {
+    background: #0073e6;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    padding: 10px 0;
+    margin: 0;
+    background-color: #f1eaea;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a {
+    color: #020202;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+nav.active .nav-links {
+    width: 100%;
+}
+
+nav.active .nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: #1b1818;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+nav.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav.active .line2 {
+    opacity: 0;
+}
+
+nav.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+        
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #0073e6, #80bfff);
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .trend-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: #ffd700;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns per row */
+            gap: 20px; /* Space between grid items */
+            margin: auto;
+        }
+
+        /* Dashboard Box */
+        .dashboard-box {
+            background-color: #bae1fb;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* For stacking items if needed */
+            align-items: center;    /* Center horizontally */
+            justify-content: center; /* Center vertically */
+            height: 350px;
+        }
+
+        /* Speedometer and List Styling */
+        #freshnessSpeedometerContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+        }
+
+        #freshnessScoreList {
+            max-height: 100px;
+            overflow-y: scroll;
+            width: 100%;
+            padding: 10px;
+            list-style: none;
+        }
+
+        #freshnessScoreList li {
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        /* Custom Scrollbar */
+        #freshnessScoreList::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #freshnessScoreList::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+        }
+
+        /* Speedometer */
+        #freshnessSpeedometer {
+            max-width: 200px;
+        }
+
+footer {
+            text-align: center;
+            padding: 20px;
+            background: #0073e6;
+            color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">UNICA</div>
+            <button class="icon" id="toggle">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#catalog">CATALOG</a></li>
+                <li><a href="/predict">PREDICT</a></li>
+                <li><a href="/analysis">ANALYSIS</a></li>
+                <li><a href="/history">HISTORY</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+<center> <br>
+<img src="trend-icon.png" alt="Trend Icon" class="trend-icon">
+            <h1>Trends Dashboard</h1> </center> 
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Delivery Share Pie Chart -->
+        <div class="dashboard-box">
+            <h3>Delivery Share</h3>
+            <canvas id="deliveryShareChart"></canvas>
+        </div>
+
+        <!-- Freshness Product Selling Bar Chart -->
+        <div class="dashboard-box">
+            <h3>Freshness Product Selling</h3>
+            <canvas id="freshnessSellingChart"></canvas>
+        </div>
+
+        <!-- Brands Performance Bar Chart -->
+        <div class="dashboard-box">
+            <h3>Brands Performance</h3>
+            <canvas id="brandsPerformanceChart"></canvas>
+        </div>
+
+        <!-- Average Freshness Speedometer and List -->
+        <div class="dashboard-box">
+            <h3>Average Freshness</h3>
+            <div id="freshnessSpeedometerContainer">
+                <canvas id="freshnessSpeedometer"></canvas>
+                <ul id="freshnessScoreList"></ul>
+            </div>
+        </div>
+
+        <!-- Products Tested Per Day -->
+        <div class="dashboard-box">
+            <h3>Products Tested Per Day</h3>
+            <canvas id="productsTestedChart"></canvas>
+        </div>
+
+        <!-- Manufacturing Categories Pie Chart -->
+        <div class="dashboard-box">
+            <h3>Manufacturing Categories</h3>
+            <canvas id="manufacturingCategoriesChart"></canvas>
+        </div>
+    </div>
+
+<footer>
+        <p>&copy; 2024 Flipkart VisionIQ. All Rights Reserved.</p>
+    </footer>
+
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>

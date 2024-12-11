@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        header {
+    background: #0073e6;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    padding: 10px 0;
+    margin: 0;
+    background-color: #f1eaea;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a {
+    color: #020202;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+nav.active .nav-links {
+    width: 100%;
+}
+
+nav.active .nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: #1b1818;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+nav.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav.active .line2 {
+    opacity: 0;
+}
+
+nav.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #0073e6, #80bfff);
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+
+        .history-title {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .history-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .history-box {
+            width: 80%;
+            max-width: 1000px;
+            background: white;
+            color: black;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table thead {
+            background-color: #3498db; /* Matching header blue */
+            color: white;
+        }
+
+        .history-table th, .history-table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .history-table tbody {
+            display: block;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-table tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .history-table th {
+            font-weight: bold;
+        }
+footer {
+            text-align: center;
+            padding: 20px;
+            background: #0073e6;
+            color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">UNICA</div>
+            <button class="icon" id="toggle">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#catalog">CATALOG</a></li>
+                <li><a href="/predict">PREDICT</a></li>
+                <li><a href="/analysis">ANALYSIS</a></li>
+                <li><a href="/history">HISTORY</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+    <div class="history-title">History</div>
+
+    <div class="history-container">
+        <div class="history-box">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date of Detection</th>
+                        <th>Time of Detection</th>
+                        <th>Records</th>
+                        <th>Class</th>
+                        <th>Current Status</th>
+                        <th>Remaining Days</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/js/history.js"></script>
+
+<footer>
+        <p>&copy; 2024 Flipkart VisionIQ. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
